@@ -20,16 +20,8 @@
 #  updated_at :datetime         not null
 #
 
-class Brewery < ActiveRecord::Base
-  attr_accessible :address, :city, :country, :desc, :email, :facebook, :name, :phone, :state, :twitter, :type, :web, :zip
+require 'spec_helper'
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
-
-  has_many :beers, dependent: :destroy
-#  extend FriendlyId
-#  friendly_id :name, use: [:slugged, :history]
-
-#  def feed
-#    Beer.from_breweries_followed_by(self)
-#  end
+describe Brewery do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

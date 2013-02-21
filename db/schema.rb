@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219175927) do
+ActiveRecord::Schema.define(:version => 20130221005430) do
 
   create_table "beers", :force => true do |t|
     t.string   "name"
     t.integer  "style"
-    t.integer  "brewery"
+    t.integer  "brewery_id"
     t.decimal  "abv"
     t.text     "desc"
     t.integer  "ibu"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130219175927) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "beers", ["brewery"], :name => "index_beers_on_brewery"
+  add_index "beers", ["brewery_id"], :name => "index_beers_on_brewery"
   add_index "beers", ["name"], :name => "index_beers_on_name"
 
   create_table "breweries", :force => true do |t|
@@ -45,11 +45,7 @@ ActiveRecord::Schema.define(:version => 20130219175927) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "breweries", ["country"], :name => "index_breweries_on_country"
   add_index "breweries", ["name"], :name => "index_breweries_on_name"
-  add_index "breweries", ["state"], :name => "index_breweries_on_state"
-  add_index "breweries", ["type"], :name => "index_breweries_on_type"
-  add_index "breweries", ["zip"], :name => "index_breweries_on_zip"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
