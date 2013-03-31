@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221005430) do
+ActiveRecord::Schema.define(:version => 20130319003727) do
 
   create_table "beers", :force => true do |t|
     t.string   "name"
@@ -47,6 +47,36 @@ ActiveRecord::Schema.define(:version => 20130221005430) do
 
   add_index "breweries", ["name"], :name => "index_breweries_on_name"
 
+  create_table "cellared_beers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "beer_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cellared_beers", ["beer_id"], :name => "index_cellared_beers_on_beer_id"
+  add_index "cellared_beers", ["user_id"], :name => "index_cellared_beers_on_user_id"
+
+  create_table "microposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -72,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130221005430) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "avatar_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

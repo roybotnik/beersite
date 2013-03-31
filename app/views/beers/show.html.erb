@@ -12,6 +12,9 @@
       <p class="beer_brewery">
       	By: <%= link_to @beer.brewery.name, @beer.brewery %>
       </p>
+      <p>
+        <%= render 'cellar' if user_signed_in? %>
+      </p>
       <p class="beer_info">
       	Style: <%= @beer.style %><br />
       	ABV: <%= @beer.abv %>%

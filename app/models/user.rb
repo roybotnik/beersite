@@ -30,4 +30,46 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
+  has_many :microposts, dependent: :destroy
+  
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :followed_users, through: :relationships, source: :followed
+
+  has_many :cellared_beers, dependent: :destroy
+  has_many :beers, through: :cellared_beers
+
+  def feed
+    Micropost.from_users_followed_by(self)
+  end
+
+# Following users
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
+  end
+
+# Cellar beer stuff
+  def cellaring?(beer)
+    cellared_beers.find_by_beer_id(beer.id)
+  end
+
+  def cellar!(beer)
+    cellared_beers.create!(beer_id: beer.id)
+  end
+
+  def uncellar!(beer)
+    cellared_beers.find_by_beer_id(beer.id).destroy
+  end
+
 end

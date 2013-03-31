@@ -22,4 +22,15 @@ module ApplicationHelper
     end
   end
 
+  def avatar_url(user, options = { size: 48 })
+    if user.avatar_url.present?
+      user.avatar_url
+    else
+      default_url = "#{root_url}guest.png"
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      size = options[:size]
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+    end
+  end
+
 end

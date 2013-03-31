@@ -18,26 +18,15 @@ html {
 
 body {
   padding-top: 41px;
-  background: url('body_background.jpg') 
+  background: url('wood.jpg') 
 }
 
-section {
-  overflow: auto;
-}
 
-.main {
-  margin-top: -26px;
-  padding-top: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background-color:#ffffff;
-  border: 1px solid #FFFFFF;
-  border-radius: 8px 8px 8px 8px;
-}
 
-textarea {
-  resize: vertical;
-}
+
+
+
+
 
 .center {
   text-align: center;
@@ -76,23 +65,7 @@ a {
       color: #CC6633;
     }
 
-/* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
 
 /* footer */
 
@@ -173,7 +146,7 @@ aside {
   position:relative;
   float: right;
   right:10px;
-  top:-20px;
+  top:0px;
 }
 
 .gravatar {
@@ -249,11 +222,8 @@ input {
   margin: 0;
   li {
     overflow: auto;
-    padding: 10px 0;
     border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
+    
   }
 }
 
@@ -261,10 +231,10 @@ input {
 
 .microposts {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 5px 0 0 0;
 
   li {
-    padding: 10px 0;
+    padding: 5px 0;
     border-top: 1px solid #e8e8e8;
   }
 }

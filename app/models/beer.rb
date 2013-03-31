@@ -20,8 +20,8 @@ class Beer < ActiveRecord::Base
   validates :brewery, presence: true
 
   belongs_to :brewery
-#  has_many :cellared_beers, dependent: :destroy
-#  has_many :users, through: :cellared_beers
+  has_many :cellared_beers, dependent: :destroy
+  has_many :users, through: :cellared_beers
 
   default_scope order: 'beers.name ASC'
 #  extend FriendlyId

@@ -1,0 +1,28 @@
+<table class="beers">
+<th>Rating</th><th>Name</th><th>Brewery</th><th>ABV</th><th>Style</th><th>Amt</th>
+<% @beer_counts.each do |beer, size| %>
+<tr>
+  <td>
+    <div class="rating">
+      <h4>4.5</h4>
+    </div>
+  </td>
+  <td>
+    <h5><%= link_to beer.name, beer %></h5>
+  </td>
+  <td>
+    <%= link_to beer.brewery.name, beer.brewery %>
+  </td>
+  <td>
+    <%= beer.abv %>%
+  </td>
+  <td>
+    <%= beer.style %>
+  </td>
+  <td>
+    <%= size %>
+  </td>
+  
+</tr>
+<% end %>
+</table>

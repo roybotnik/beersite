@@ -40,7 +40,7 @@ class BeersController < ApplicationController
 
   def show
   	@beer = Beer.find(params[:id])
-#    @user_items = CellaredBeer.where(:beer_id => params[:id]).select(:user_id).uniq
+    @user_items = CellaredBeer.where(:beer_id => params[:id]).select(:user_id).uniq
     if request.path != beer_path(@beer)
       redirect_to @beer, status: :moved_permanently
     end

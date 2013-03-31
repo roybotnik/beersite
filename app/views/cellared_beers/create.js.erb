@@ -1,0 +1,3 @@
+$("#beer_brewery").html("<%= escape_javascript(render('shared/beer_stats')) %>")
+$("#cellared-user").html('<%= @beer.cellared_beers.count %>')
+$("#cellared-total").html('<%= current_user.beers.where(:id => @beer.id).count %>')
